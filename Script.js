@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         stageDiv.className = 'gallery-stage';
         var img = document.createElement('img');
         img.id = 'gallery-image';
-        img.src = 'aamras.png';
+        img.src = 'herocover.png';
         img.alt = 'Gallery image';
         stageDiv.appendChild(img);
         var next = document.createElement('button');
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Images available in the folder (adjust list if you add/remove files)
   var images = thumbs.length
     ? thumbs.map(function(t){ return t.getAttribute('src'); })
-    : ['aamras.jpeg','FrozenSitafal.webp','anjir.webp',
+    : ['madhuramras.jpeg','FrozenSitafal.webp','anjir.webp',
        'Frozen green peas.jpeg','Frozen Seet Corn.jpeg',
        'Frozen Mix veg.jpeg','cover.png','aamras.jpeg'];
 
