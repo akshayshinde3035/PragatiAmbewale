@@ -243,13 +243,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Hero Section (new) --- */
 .hero-cover{position:relative;overflow:hidden;background:#f6fbf6}
 .hero-bg{background-image:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.22)), url('Hero.jpg');background-size:cover;background-position:center center;position:absolute;inset:0}
-@media (max-width: 600px) {
-  .hero-bg {
-    background-image: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.22)), url('Mobilecover.jpg');
-    background-size: cover;
-    background-position: center center;
-  }
-}
+
 .header-pills .pill{padding:6px 10px;background:transparent;border-radius:8px;border:1px solid rgba(0,0,0,0.06);color:var(--text-color);font-weight:700}
 .header-pills .pill:hover{background: rgba(46,125,50,0.06);color:var(--primary-color)}
 
@@ -667,6 +661,13 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 1024px) {
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .hero-bg {
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.22)), url('Mobilecover.jpg');
+    background-size: cover;
+    background-position: center center;
   }
 }
 
