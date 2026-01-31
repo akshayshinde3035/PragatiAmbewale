@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         thumbsEl = document.createElement('div');
         thumbsEl.className = 'gallery-thumbs';
         container.appendChild(thumbsEl);
-        var files = ['aamras.png','FrozenSitafal-1.webp','anjir.jfif','Frozen green peas.png','Frozen Seet Corn.png','Frozen Mix veg.png','mangohero.png','gold hapus aamras.png'];
+        var files = ['aamras.jpeg','FrozenSitafal.webp','anjir.webp','Frozen green peas.jpeg','Frozen Seet Corn.jpeg','Frozen Mix veg.jpeg','cover.png','aamras.jpeg'];
         files.forEach(function(src, idx){
           var t = document.createElement('img');
           t.className = 'thumb';
@@ -146,16 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Images available in the folder (adjust list if you add/remove files)
   var images = thumbs.length
     ? thumbs.map(function(t){ return t.getAttribute('src'); })
-    : [
-        'aamras.png',
-        'FrozenSitafal-1.webp',
-        'anjir.jfif',
-        'Frozen green peas.png',
-        'Frozen Seet Corn.png',
-        'Frozen Mix veg.png',
-        'mangohero.png',
-        'gold hapus aamras.png'
-      ];
+    : ['aamras.jpeg','FrozenSitafal.webp','anjir.webp',
+       'Frozen green peas.jpeg','Frozen Seet Corn.jpeg',
+       'Frozen Mix veg.jpeg','cover.png','aamras.jpeg'];
 
   var i = 0;
   var autoplayMs = 2000;
