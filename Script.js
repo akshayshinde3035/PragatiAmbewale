@@ -244,21 +244,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     : [
 
-        'aamras.png',
+        'Frozen Mix veg.jpeg',
 
-        'FrozenSitafal-1.webp',
+        'Frozen Seet Corn.jpeg',
 
-        'anjir.jfif',
+        'anjir.png',
 
-        'Frozen green peas.png',
+        'Frozen green peas.jpeg',
 
-        'Frozen Seet Corn.png',
+        'Frozen Seet Corn.jpeg',
 
-        'Frozen Mix veg.png',
+        'Frozen Mix veg.jpeg',
 
-        'mangohero.png',
+        'cover.png',
 
-        'gold hapus aamras.png'
+        'aamras.jpeg'
 
       ];
 
