@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         thumbsEl = document.createElement('div');
         thumbsEl.className = 'gallery-thumbs';
         container.appendChild(thumbsEl);
-        var files = ['aamras.jpeg','FrozenSitafal.webp','anjir.webp','Frozen green peas.jpeg','Frozen Seet Corn.jpeg','Frozen Mix veg.jpeg','cover.png','aamras.jpeg'];
+        var files = ['madhuramras.jpeg','FrozenSitafal.webp','anjir.webp','Frozen green peas.jpeg','Frozen Seet Corn.jpeg','Frozen Mix veg.jpeg','cover.png','aamras.jpeg'];
         files.forEach(function(src, idx){
           var t = document.createElement('img');
           t.className = 'thumb';
