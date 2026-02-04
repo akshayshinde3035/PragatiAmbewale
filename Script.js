@@ -1,3 +1,5 @@
+
+
 // Pragati Foods - Gallery & small helpers
 
 
@@ -266,5 +268,228 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+
+
+// Simple single-image carousel using files in the folder
+
+(function() {
+
+  var imgEl = document.getElementById('gallery-image');
+
+  var prevBtn = document.querySelector('.gallery-btn.prev');
+
+  var nextBtn = document.querySelector('.gallery-btn.next');
+
+  var thumbsWrap = document.querySelector('.gallery-thumbs');
+
+  var thumbs = thumbsWrap ? Array.prototype.slice.call(thumbsWrap.querySelectorAll('img.thumb')) : [];
+
+
+
+  if (!imgEl) return; // gallery not on page
+
+
+
+  // Images available in the folder (adjust list if you add/remove files)
+
+  var images = thumbs.length
+
+    ? thumbs.map(function(t){ return t.getAttribute('src'); })
+
+    : ['madhuramras.jpeg','FrozenSitafal.webp','anjir.webp',
+
+       'Frozen green peas.jpeg','Frozen Seet Corn.jpeg',
+
+       'Frozen Mix veg.jpeg','cover.png','aamras.jpeg'];
+
+
+
+  var i = 0;
+
+  var autoplayMs = 2000;
+
+  var autoplay;
+
+  
+
+  function updateActiveThumbs() {
+
+    if (!thumbs || !thumbs.length) return;
+
+    thumbs.forEach(function(t, idx){ t.classList.toggle('active', idx === i); });
+
+  }
+
+
+
+  function startAutoplay() {
+
+    stopAutoplay();
+
+    autoplay = setInterval(function(){ show(i + 1); }, autoplayMs);
+
+  }
+
+  function stopAutoplay() {
+
+    if (autoplay) {
+
+      clearInterval(autoplay);
+
+      autoplay = null;
+
+    }
+
+  }
+
+
+
+  function show(idx) {
+
+    i = (idx + images.length) % images.length;
+
+    imgEl.style.opacity = 0;
+
+    setTimeout(function() {
+
+      imgEl.src = images[i];
+
+      imgEl.alt = 'Gallery image ' + (i + 1);
+
+      imgEl.style.opacity = 1;
+
+      updateActiveThumbs();
+
+    }, 120);
+
+  }
+
+
+
+  // If an image fails to load on GitHub Pages (case sensitivity or format), skip to the next
+
+  var loadErrorCount = 0;
+
+  if (imgEl) {
+
+    imgEl.addEventListener('error', function() {
+
+      loadErrorCount++;
+
+      if (loadErrorCount < images.length) {
+
+        show(i + 1);
+
+      } else {
+
+        // Stop autoplay after too many failures to avoid loops
+
+        stopAutoplay();
+
+        if (console && console.warn) {
+
+          console.warn('Some gallery images could not be loaded. Check filenames and extensions (case-sensitive on GitHub Pages).');
+
+        }
+
+      }
+
+    });
+
+  }
+
+
+
+  if (prevBtn) {
+
+    prevBtn.addEventListener('click', function() {
+
+      stopAutoplay();
+
+      show(i - 1);
+
+      startAutoplay();
+
+    });
+
+  }
+
+  if (nextBtn) {
+
+    nextBtn.addEventListener('click', function() {
+
+      stopAutoplay();
+
+      show(i + 1);
+
+      startAutoplay();
+
+    });
+
+  }
+
+
+
+  // Wire up thumbnail clicks
+
+  if (thumbs && thumbs.length) {
+
+    thumbs.forEach(function(t, idx){
+
+      // Ensure consistent size regardless of global CSS
+
+      t.style.width = '90px';
+
+      t.style.height = '60px';
+
+      t.addEventListener('click', function(){
+
+        stopAutoplay();
+
+        show(idx);
+
+        startAutoplay();
+
+      });
+
+    });
+
+  }
+
+
+
+  // Pause on hover over the stage, resume on leave (nice UX)
+
+  var stageEl = document.querySelector('.gallery-stage');
+
+  if (stageEl) {
+
+    stageEl.addEventListener('mouseenter', stopAutoplay);
+
+    stageEl.addEventListener('mouseleave', startAutoplay);
+
+  }
+
+
+
+  // Keyboard support
+
+  document.addEventListener('keydown', function(e) {
+
+    if (e.key === 'ArrowLeft') { stopAutoplay(); show(i - 1); startAutoplay(); }
+
+    if (e.key === 'ArrowRight') { stopAutoplay(); show(i + 1); startAutoplay(); }
+
+  });
+
+
+
+  // Init
+
+  show(0);
+
+  startAutoplay();
+
+})();
 
 
